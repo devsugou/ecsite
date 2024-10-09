@@ -1,7 +1,7 @@
 -- Project Name : テーブル定義データ
 -- Date/Time    : 2021/04/27
 -- Author       : 菅生
--- RDBMS Type   : MySQL
+-- RDBMS Type   : PostgreSQL
 -- Application  : A5:SQL Mk-2
 
 /*
@@ -83,11 +83,11 @@ create table EXCHANGE_DECIDE (
   EXCHANGE_NO CHAR(8) not null
   , USER_ID CHAR(4) not null
   , GOODS_ID CHAR(8) not null
-  , RESERVE_DATE DATETIME not null
+  , RESERVE_DATE TIMESTAMP  not null
   , EXCHANGE_AMOUNT INTEGER not null
-  , INSERT_DATE DATETIME not null
+  , INSERT_DATE TIMESTAMP  not null
   , INSERT_USER CHAR(4) not null
-  , UPDATE_DATE DATETIME not null
+  , UPDATE_DATE TIMESTAMP  not null
   , UPDATE_USER CHAR(4) not null
   , DELETE_FLAG CHAR(1) not null
   , constraint EXCHANGE_DECIDE_PKC primary key (EXCHANGE_NO)
@@ -98,11 +98,11 @@ create table EXCHANGE_PLAN (
   RESERVE_NO CHAR(8) not null
   , USER_ID CHAR(4) not null
   , GOODS_ID CHAR(8) not null
-  , RESERVE_DATE DATETIME not null
+  , RESERVE_DATE TIMESTAMP  not null
   , EXCHANGE_AMOUNT INTEGER not null
-  , INSERT_DATE DATETIME not null
+  , INSERT_DATE TIMESTAMP  not null
   , INSERT_USER CHAR(4) not null
-  , UPDATE_DATE DATETIME not null
+  , UPDATE_DATE TIMESTAMP  not null
   , UPDATE_USER CHAR(4) not null
   , DELETE_FLAG CHAR(1) not null
   , constraint EXCHANGE_PLAN_PKC primary key (RESERVE_NO)
@@ -327,14 +327,14 @@ create table USER_MASTER (
   , FIRST_NM VARCHAR(10) not null
   , FAMILY_NM_KANA VARCHAR(100)
   , FIRST_NM_KANA VARCHAR(100)
-  , LAST_LOGIN_DATE DATETIME
+  , LAST_LOGIN_DATE TIMESTAMP
   , USER_RANK CHAR(1) not null
   , LOGIN_COUNT INTEGER
   , LOGIN_FAILURE_COUNT INTEGER
   , ACCOUNT_LOCK_FLAG CHAR(1) not null
   , INSERT_DATE DATE not null
   , INSERT_USER CHAR(4) not null
-  , UPDATE_DATE DATETIME not null
+  , UPDATE_DATE TIMESTAMP  not null
   , UPDATE_USER CHAR(4) not null
   , DELETE_FLAG CHAR(1) not null
   , constraint USER_MASTER_PKC primary key (USER_ID)

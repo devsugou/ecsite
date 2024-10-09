@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: devsugou/ecsite-app:latest
+    container_name: ecsite_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    volumes:
+      - /home/msugo/work_ecsite/logs:/app/log
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M      
+    command: tail -f /dev/null
+
+  postgres:
+    image: "postgres:latest"
+    container_name: ecsite_db
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "mysecretpassword"
+      POSTGRES_DB: "ecsite_db"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/01-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./db/02-data.sql:/docker-entrypoint-initdb.d/02-data.sql
+    deploy:
+      resources:
+        limits:
+          cpus: '0.10'
+          memory: 64M
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  pgdata:

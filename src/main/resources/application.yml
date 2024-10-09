@@ -1,7 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:test
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
-  h2.console.enabled: true
+    url: jdbc:postgresql://postgres:5432/ecsite_db
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

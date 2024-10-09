@@ -74,7 +74,7 @@
            ,UPDATE_USER       = #{userId}
         WHERE
             USER_ID     = #{userId}
-        AND POINT_YM    >= FORMATDATETIME(NOW(), '%Y%m')
+        AND POINT_YM    >= TO_CHAR(NOW(), 'YYYYMM')
         AND DELETE_FLAG = '0'
     </update>
     
