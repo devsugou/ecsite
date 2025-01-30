@@ -1,6 +1,8 @@
 package com.example.ecsite.app.form;
 
 import java.math.BigDecimal;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 /**
  * 商品詳細画面のフォームクラスです。
@@ -31,6 +33,8 @@ public class GoodsDetailForm {
     private String categoryName = null;
 
     /** 交換個数 */
+    @NotBlank(message = "交換する商品の個数を入力してください。")
+    @Pattern(regexp = "^[0-9]+$", message = "交換する商品の個数は、半角数値で入力してください。")
     private String exchangeAmount = null;
 
     /** エラーメッセージ */
